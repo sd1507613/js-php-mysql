@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="format-detection" content="telephone=no">
+        <title>demo</title>
+        <link rel="stylesheet" href="../css/test.css">
+        <link rel="stylesheet" type="text/css" href="../css/common.css" />
+        <link rel="stylesheet" type="text/css" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/frozen.css">
+        <script src="../js/jquery-1.8.3.js"></script>
+        <script src="../js/cosmos_canvas.js"></script>
+        <script src="../js/zepto.min.js"></script>
+        <script src="../js/frozen.js"></script>
+        <script src="../js/vue.js"></script>
+        <script src="../js/messageEx.js" type="text/javascript"></script>
+        <script src="../js/plupload.full.min.js" type="text/javascript"></script>
+        <script src="../js/uploaderEx.js" type="text/javascript"></script>
+    </head>
+
+    <style type="text/css">
+        img{
+            width: 80px;
+            height: 80px;
+        }
+    </style>
+    
+    <body ontouchstart>
+        <header class="ui-header ui-header-positive ui-border-b">
+            <i class="ui-icon-return" onclick="history.back(-1)"></i><h1 style="margin-top: 10px">实有单位查询统计</h1><button class="ui-btn" onclick="history.back(-1)">返回</button>
+        </header>
+        <footer class="ui-footer ui-footer-btn">
+            <ul class="ui-tiled ui-border-t">
+                <li data-href="index.html" class="ui-border-r"><div>保存</div></li>
+                <li data-href="ui.html" class="ui-border-r"><div>重填</div></li>
+                <li data-href="js.html"><div>录入</div></li>
+            </ul>
+        </footer>
+        <section class="ui-container">
+    
+<div id='app'>
+
+    <div class="demo-block">
+            <div class="ui-form ui-border-t">
+                    <div class="ui-form-item ui-border-b">
+                        <label style="width: 120px">
+                            所属地址：
+                        </label>
+                        <input type="text" placeholder="所属地址" id="所属地址"/>
+                        <a href="#" class="ui-icon-close" @click = 'delete_word("所属地址")'></a>
+                    </div>
+                    <div class="ui-form-item ui-border-b">
+                        <label style="width: 120px">
+                            学校：
+                        </label>
+                        <input type="text" placeholder="学校" id="学校"/>
+                        <a href="#" class="ui-icon-close" @click = 'delete_word("学校")'></a>
+                    </div>
+                    <div class="ui-form-item ui-border-b">
+                        <label style="width: 120px">
+                            居民小区：
+                        </label>
+                        <input type="text" placeholder="居民小区" id="居民小区"/>
+                        <a href="#" class="ui-icon-close" @click = 'delete_word("居民小区")'></a>
+                    </div>
+                    <div class="ui-form-item ui-border-b">
+                        <label style="width: 120px">
+                            幼儿园：
+                        </label>
+                        <input type="text" placeholder="幼儿园" id="幼儿园"/>
+                        <a href="#" class="ui-icon-close" @click = 'delete_word("幼儿园")'></a>
+                    </div>
+                    <div class="ui-form-item ui-border-b">
+                        <label style="width: 120px">
+                            所属派出所：
+                        </label>
+                        <input type="text" placeholder="所属派出所" id="所属派出所"/>
+                        <a href="#" class="ui-icon-close" @click = 'delete_word("所属派出所")'></a>
+                        </a>
+                    </div>
+                    <div class="ui-form-item ui-border-b">
+                        <label style="width: 120px">
+                            检查情况：
+                        </label>
+                        <input type="text" placeholder="检查情况" id="检查情况"/>
+                        <a href="#" class="ui-icon-close" @click = 'delete_word("检查情况")'></a>
+                    </div>
+                    <div class="ui-form-item ui-border-b">
+                        <label style="width: 120px">
+                            建模地址：
+                        </label>
+                        <input type="text" placeholder="建模地址" id="建模地址"/>
+                        <a href="#" class="ui-icon-close" @click = 'delete_word("建模地址")'></a>
+                    </div>
+                    <div class="ui-form-item ui-border-b">
+                        <label style="width: 120px">
+                            检查照片：
+                        </label>
+                        <a class="btn" id="btn" style="margin-left: 95px">检查照片</a>
+                        <ul id="ul_pics" class="ul_pics clearfix"></ul>
+                    </div>
+            </div>
+    </div>
+</div>
+    </body>
+
+    <script type="text/javascript">
+    new Vue({
+            el:'#app',
+            data: { 
+            },
+            mounted:function(){
+                 initUpload('btn','10mb',"jpg,png,gif",true,"../php_server/upload.php");
+            },
+            methods:{
+                delete_word:function(event){
+                    var str = '#'+event
+                    $(str).val("");
+                }
+            }
+        });
+    </script>
+</html>

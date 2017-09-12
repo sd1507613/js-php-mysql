@@ -1,0 +1,26 @@
+.div1{
+float: left;
+height: 41px;
+width: 144px;
+position:relative;
+}
+.div2{
+text-align:center;
+padding-top:12px;
+font-size:15px;
+font-weight:800;
+ height: 81px;
+}
+.inputstyle{
+    width: 144px;
+    height: 83px;<!--这个高度必须大于div2的高度 --> 
+    cursor: pointer;
+    font-size: 30px;
+    outline: medium none;
+    position: absolute;
+    filter:alpha(opacity=0);
+    -moz-opacity:0;
+    opacity:0; 
+    left:0px;
+    top: 0px;
+}

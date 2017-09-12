@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="format-detection" content="telephone=no">
+        <title>demo</title>
+        <script type="text/javascript" src="http://tajs.qq.com/stats?sId=37342703" charset="UTF-8"></script>
+        <link rel="stylesheet" href="../css/test.css">
+        <link rel="stylesheet" type="text/css" href="../css/common.css" />
+        <link rel="stylesheet" type="text/css" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/frozen.css">
+        <script src="../js/jquery-1.8.3.js"></script>
+        <script src="../js/cosmos_canvas.js"></script>
+        <script src="../js/zepto.min.js"></script>
+        <script src="../js/frozen.js"></script>
+        <script src="../js/vue.js"></script>
+        <script src="../js/messageEx.js" type="text/javascript"></script>
+        <script src="../js/plupload.full.min.js" type="text/javascript"></script>
+        <script src="../js/uploaderEx.js" type="text/javascript"></script>
+    </head>
+    
+    <body ontouchstart>
+
+    <div id='app'>
+        <header class="ui-header ui-header-positive ui-border-b">
+            <i class="ui-icon-return" onclick="history.back(-1)"></i><h1 style="margin-top: 10px">{{title_str}}</h1><button class="ui-btn" onclick="history.back(-1)">返回</button>
+        </header>
+        <section class="ui-container">
+    
+    <table class="ui-table ui-border">
+        <thead>
+        <tr><th>姓名</th><th>所属派出所</th><th>派出所录入人员</th></tr>
+        </thead>
+        <tbody>
+        <tr v-for="data in data_list" @click="check_buttom(data)"><td>{{data.name}}</td><td>{{data.police_local}}</td><td>{{data.police_person}}</td></tr>
+        </tbody>
+    </table>
+<!--     <div class="ui-poptips" style="margin-top:10%" id="list_infor">
+<div class="ui-poptips-cnt"><i></i>{{data_infor}}</div>
+<div class="ui-poptips-cnt"><i></i>{{data_infor2}}</div>
+</div> -->
+</div>
+    </body>
+
+    <script type="text/javascript">
+    new Vue({
+            el:'#app',
+            data: { 
+                title_str : "",
+                title:["常住人口","寄住人口","暂住人口"],
+                data_list :[],
+                the_type:1
+            },
+            methods:{
+                check_buttom:function(event){
+                    location.href = './select_person.html?id=' + event.id +"&type=" + this.the_type
+                }
+            },
+            mounted:function(){
+                var postData = { //获取或设置客户端使用的 HTTP 数据传输方法（GET 或 POST）。
+                    requestType: "selectPerson",
+                    para:
+                    {
+                        type:this.the_type,              
+                    }
+                };
+                var cbk = responseJson => this.data_list = responseJson
+
+                messageEx("../php_server/process.php",postData, cbk);
+                return;
+            },
+            created:function(){
+                this.the_type = getUrlParam("type")
+                this.title_str = this.title[this.the_type-1]
+            }
+        });
+
+    // $("#list_infor").show()
+    // setTimeout(function(){$("#list_infor").hide()},1000)
+    // }
+    </script>
+</html>

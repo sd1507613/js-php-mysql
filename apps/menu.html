@@ -1,0 +1,271 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+<title>demo</title>
+<script src="js/jquery-1.8.3.js"></script>
+<script src="js/cosmos_canvas.js"></script>
+<script src="js/zepto.min.js"></script>
+<script src="js/frozen.js"></script>
+<script src="js/vue.js"></script>
+<link rel="stylesheet" href="css/frozen.css">
+<style>
+body{
+	margin:0px auto;
+	padding:0px 0px 64px 0px;
+	background:#efeff4;
+	position:relative;
+	display:block;
+}
+.vintage{
+margin-top : 50px;
+color: #fafafa;
+letter-spacing: 0;
+text-shadow: 0px 1px 0px #999, 0px 2px 0px #888, 0px 3px 0px #777, 0px 4px 0px #666, 0px 5px 0px #555, 0px 6px 0px #444, 0px 7px 0px #333, 0px 8px 7px #001135 
+}
+
+.Container{
+	height:60px;
+	background:#ffffff;
+	position:absolute;
+	left:0px;
+	top:44px;
+	width:100%;
+	border-bottom: 1px solid #dedee0; 
+}
+.Container .DldNow{
+	display: block;
+    height: 38px;
+    line-height: 38px;
+    text-align: center;
+    vertical-align: middle;
+    color: #ffffff;
+    background: #04be02;
+    border: 1px solid rgba(0,0,0,0.2);
+    padding: 0px 8px;
+    border-radius: 4px;
+    font-size: 16px;
+	left: 16px;
+	right: 16px;
+	top:10px;
+	position: absolute;
+}
+.DldNow:before{
+    content:" ";
+    position:absolute;
+    top:0px;
+    right:0px;
+    border-top:1px solid #d9d9d9;
+    color:#d9d9d9;
+    background-color: #d9d9d9;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+    z-index:5;
+}
+
+ .ChooseTools{
+	margin-top:0px;
+	padding: 5px;
+	overflow:hidden;
+	zoom:1;
+}
+
+.NavLinks{
+	position:relative;
+	width:33.33%;
+	float: left;
+	overflow: hidden;
+	
+}
+.NavLinks .ItemLink{
+	display:block;
+	margin: 5px;
+	position: relative;
+}
+.NavLinks .ItemLink:before{
+	content:"";
+	display: block;
+	position: relative;
+	padding-top: 100%;
+
+}
+/*  */
+.NavLinks .ItemLink img{
+	left: 15%;
+	top: 15%;
+	position: absolute;
+	display: block;
+	width: 70%;
+	height: 70%;
+  background-color: transparent;
+}
+.NavLinks .ItemLink p{
+  color: #ffffff;
+  align:center;
+}
+</style>
+</head>
+<body>
+<div id = "app">
+<canvas id="starts" style="position:absolute;z-index:-1"></canvas>  
+<!-- ChooseTools 公共样式 -->
+</br>
+<font class = "vintage" style="color: #ffffff ;margin-left:30% ;font-size:24px">信息采集展示</font>
+
+<div class="ChooseTools">
+  <div class="NavLinks">
+  <!-- 列表项 Item：图片加文字 -->
+    <a class="ItemLink" href="javascript:void(0)" @click = 'trun("人员")'> 
+    <!-- 整个a标签内嵌套文字加图片内容 ItemLink -->
+    <img src="img/人员盘查.svg">
+    <P align=center>人员盘查</P>
+  </a>
+  </div>
+
+
+<div class="NavLinks">
+  <!-- 列表项 Item：图片加文字 -->
+    <a class="ItemLink" href="./H_info/company.html"> 
+    <!-- 整个a标签内嵌套文字加图片内容 ItemLink -->
+    <img src="img/社会信息.svg">
+    <P align=center>社会信息</P>
+  </a>
+  </div>
+
+<div class="NavLinks">
+  <!-- 列表项 Item：图片加文字 -->
+    <a class="ItemLink" href="./H_info/home.html"> 
+    <!-- 整个a标签内嵌套文字加图片内容 ItemLink -->
+    <img src="img/房屋采集.svg">
+    <P align=center>房屋采集</P>
+  </a>
+  </div>
+
+<div class="NavLinks">
+  <!-- 列表项 Item：图片加文字 -->
+    <a class="ItemLink" href="javascript:void(0)"> 
+    <!-- 整个a标签内嵌套文字加图片内容 ItemLink -->
+    <img src="img/场所采集.svg">
+    <P align=center>场所采集</P>
+  </a>
+  </div>
+
+<div class="NavLinks">
+  <!-- 列表项 Item：图片加文字 -->
+    <a class="ItemLink" href="javascript:void(0)"> 
+    <!-- 整个a标签内嵌套文字加图片内容 ItemLink -->
+    <img src="img/场所检查.svg">
+    <P align=center>场所检查</P>
+  </a>
+  </div>
+
+<div class="NavLinks">
+  <!-- 列表项 Item：图片加文字 -->
+    <a class="ItemLink" href="javascript:void(0)"> 
+    <!-- 整个a标签内嵌套文字加图片内容 ItemLink -->
+    <img src="img/车辆检查.svg">
+    <P align=center>车辆检查</P>
+  </a>
+  </div>
+
+<div class="NavLinks">
+  <!-- 列表项 Item：图片加文字 -->
+    <a class="ItemLink" href="javascript:void(0)"> 
+    <!-- 整个a标签内嵌套文字加图片内容 ItemLink -->
+    <img src="img/治安检查.svg">
+    <P align=center>治安检查</P>
+  </a>
+  </div>
+
+<div class="NavLinks">
+  <!-- 列表项 Item：图片加文字 -->
+    <a class="ItemLink" href="javascript:void(0)" @click = 'trun("人员查询")'> 
+    <!-- 整个a标签内嵌套文字加图片内容 ItemLink -->
+    <img src="img/人员查询.svg">
+    <P align=center>人员查询</P>
+  </a>
+  </div>
+
+<!-- <div class="NavLinks">
+  列表项 Item：图片加文字
+    <a class="ItemLink" href="javascript:void(0)"> 
+    整个a标签内嵌套文字加图片内容 ItemLink
+    <img src="img/wxb账户.svg">
+    <P align=center>信息采集展示</P>
+  </a>
+  </div> -->
+
+</div>
+<section id="actionsheet">
+  <div class="demo-item">
+      <div class="demo-block">
+          <div class="ui-actionsheet" id= "selectDraftType">  
+              <div class="ui-actionsheet-cnt">
+                  <h4>请选择盘查类型</h4> 
+                  <button v-for = "data in draft_type_all" @click = 'trun_draft(data)'>{{data.name}}</button> 
+                  <button class="ui-actionsheet-del"  @click = "closeTrun('#selectDraftType')">取消</button> 
+              </div>         
+          </div>
+      </div>
+  </div>
+</section>
+
+<section id="actionsheet">
+  <div class="demo-item">
+      <div class="demo-block">
+          <div class="ui-actionsheet" id= "selectSearchType">  
+              <div class="ui-actionsheet-cnt">
+                  <h4>请选择查询类型</h4> 
+                  <button v-for = "data in search_type_all" @click = 'trun_select(data)'>{{data.name}}</button> 
+                  <button class="ui-actionsheet-del"  @click = "closeTrun('#selectSearchType')">取消</button> 
+              </div>         
+          </div>
+      </div>
+  </div>
+</section>
+</div>
+
+
+<script type="text/javascript">
+$(function(){  
+//canvas的id名，星星颜色(hsla的hue色调)，星星数量，星星半径比，星星移动范围(值越大范围越小)，星星移动速度(值越大速度越慢),星星拖尾效果(0~1值越小拖尾越明显)  
+canvas("starts",230,1000,60,2,50000,0.5);  
+});  
+new Vue({
+    el:'#app',
+    data: {
+        draft_type_all: [{name:"常住人口",href:"./H_info/inhabitant.html"},{name:"寄住人口",href:"./H_info/lodged.html"},{name:"暂住人口",href:"./H_info/temporary.html"}],
+        search_type_all: [{name:"常住人口",type:1},{name:"寄住人口",type:2},{name:"暂住人口",type:3}]            
+    },
+    methods:{
+        trun : function(event){
+           if(event == "人员"){
+              $('#selectDraftType').addClass('show');
+           }else if(event == "人员查询"){
+              $('#selectSearchType').addClass('show');
+           }
+           else{
+            //location.href = event
+           }
+        },
+        closeTrun:function(event){
+            $(event).removeClass('show');
+        },
+        trun_draft:function(event){
+            location.href = event.href
+        },
+        trun_select:function(event){
+            location.href = './H_info/select_list.html?type=' + event.type
+        }
+    }
+});
+</script>
+
+</body>
+</html>
+
+
+
